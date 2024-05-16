@@ -1,0 +1,62 @@
+<div class="row container">
+  <div class="col-auto">
+    <h2>Hi {{name}}</h2>
+  </div>
+</div>
+
+<div class="container mt-4">
+
+  <div class= "card new-project-card col-md-6"> 
+    
+    <h4>Create a new project</h4>
+
+    <form class="form new-project-form">
+      <div class="form-group">
+        <label for="name-new-project">Project name:</label>
+        <input class="form-input" type="text" id="name-new-project" />
+      </div>
+      <div class="form-group">
+        <label for="fund-new-project">Fund needed ($):</label>
+        <input class="form-input" type="text" id="fund-new-project" />
+      </div>
+      <div class="form-group">
+        <label for="description-new-project">Description:</label>
+        <input class="form-input" type="text" id="description" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Create</button>
+      </div>
+    </form>
+
+  </div>
+
+  {{#if projects.length}}
+  <div class= "card project-card col-md-6"> 
+    {{#each projects as |project|}}
+    <div>
+      <div>
+        <h4><a href="/project/{{id}}">{{name}}</a></h4>
+      </div>
+      
+      <div>
+        <p>
+          <span for="img" aria-label="money">💲 </span>
+          <span class="dollar-amount">
+          {{format_amount needed_funding}} needed</span> 
+        
+          Created on {{format_date date_created}}
+        </p>
+      </div>
+      <div class="project pb-3 mb-3">
+        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
+      </div>
+      
+    {{/each}}
+  </div>
+  {{/if}}
+
+</div>
+
+
+
+<script src="/js/profile.js"></script>
